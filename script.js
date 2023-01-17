@@ -1,3 +1,5 @@
+//const { numeric } = require("tar");
+
 // Array of special characters to be included in password
 var specialCharacters = [
   '@',
@@ -95,7 +97,7 @@ function getPasswordOptions() {
     prompt("How many characters should the passwork have?")
   )
 
-  if (isNaN(lenght) === true) {
+  if (isNaN(length) === true) {
     alert(`Password lenght must be provided as a number`);
     return;
   }
@@ -166,12 +168,35 @@ function generatePassword() {
 
   let guaranteedCharacter = []
 
-  if(options.hasSpecialCharacters){
+  if (options.hasSpecialCharacters) {
     possibleCharacter = possibleCharacter.concat(specialCharacters);
     guaranteedCharacter.push(getRandom(specialCharacters))
   }
 
-  console.log
+  if (options.hasLowerCased) {
+    possibleCharacter = possibleCharacter.concat(lowerCasedCharacters);
+    guaranteedCharacter.push(getRandom(lowerCasedCharacters))
+  }
+
+  if (options.hasUpperCased) {
+    possibleCharacter = possibleCharacter.concat(upperCasedCharacters);
+    guaranteedCharacter.push(getRandom(upperCasedCharacters))
+  }
+
+  if (options.hasNumericCharacters) {
+    possibleCharacter = possibleCharacter.concat(numericCharacters);
+    guaranteedCharacter.push(getRandom(numericCharacters))
+  }
+
+  for (let index = 0; index < options.length; index++) {
+    var generated = getRandom(possibleCharacter);
+    console.log(generated);
+    result.push(generated);
+  }
+
+  // for(let index = 0)
+
+  console.log(result)
 
 }
 
