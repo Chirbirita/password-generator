@@ -90,18 +90,92 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
+  // variable to store length of passworkd from user input
+  let length = parseInt(
+    prompt("How many characters should the passwork have?")
+  )
 
+  if (isNaN(lenght) === true) {
+    alert(`Password lenght must be provided as a number`);
+    return;
+  }
+
+  if (length < 10) {
+    alert(`Password lenght must be at least 10 characters`);
+    return;
+  }
+
+  if (length > 64) {
+    alert(`Password must be less than 65 characters`);
+    return;
+  }
+
+  let hasSpecialCharacters = confirm(
+    "Click OK to confirm including special characters"
+  )
+
+  let hasNumericCharacters = confirm(
+    "Click OK to confirm including numeric characters"
+  )
+
+  let hasLowerCased = confirm(
+    "Click OK to confirm including lowercase characters"
+  )
+
+  let hasUpperCased = confirm(
+    "Click OK to confirm including uppercase characters"
+  )
+
+  if (hasLowerCased === false &&
+    hasUpperCased === false &&
+    hasSpecialCharacters === false &&
+    hasNumericCharacters === false) {
+    alert(`Must select at least one character type`);
+    return
+  }
+
+  let PasswordOptions = {
+    length: length,
+    hasSpecialCharacters: hasSpecialCharacters,
+    hasNumericCharacters: hasNumericCharacters,
+    hasLowerCased: hasLowerCased,
+    hasUpperCased: hasUpperCased
+  }
+
+  console.log(PasswordOptions);
+
+  return PasswordOptions;
 }
+
 
 // Function for getting a random element from an array
 function getRandom(arr) {
+  let randomIndex = Math.floor(Math.random() * arr.length);
+  let randomElement = arr[randomIndex];
 
+  return randomElement;
 }
 
 // Function to generate password with user input
 function generatePassword() {
+  let options = getPasswordOptions();
+  console.log(options);
+  let result = []
+
+  let possibleCharacter = []
+
+  let guaranteedCharacter = []
+
+  if(options.hasSpecialCharacters){
+    possibleCharacter = possibleCharacter.concat(specialCharacters);
+    guaranteedCharacter.push(getRandom(specialCharacters))
+  }
+
+  console.log
 
 }
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
@@ -116,3 +190,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+
