@@ -1,5 +1,3 @@
-//const { numeric } = require("tar");
-
 // Array of special characters to be included in password
 var specialCharacters = [
   '@',
@@ -113,19 +111,19 @@ function getPasswordOptions() {
   }
 
   let hasSpecialCharacters = confirm(
-    "Click OK to confirm including special characters"
+    "Include special characters"
   )
 
   let hasNumericCharacters = confirm(
-    "Click OK to confirm including numeric characters"
+    "Include including numeric characters"
   )
 
   let hasLowerCased = confirm(
-    "Click OK to confirm including lowercase characters"
+    "Include lowercase characters"
   )
 
   let hasUpperCased = confirm(
-    "Click OK to confirm including uppercase characters"
+    "Include uppercase characters"
   )
 
   if (hasLowerCased === false &&
@@ -144,7 +142,7 @@ function getPasswordOptions() {
     hasUpperCased: hasUpperCased
   }
 
-  console.log(PasswordOptions);
+  //console.log(PasswordOptions);
 
   return PasswordOptions;
 }
@@ -196,8 +194,9 @@ function generatePassword() {
 
   // for(let index = 0)
 
-  console.log(result)
+  console.log(result);
 
+  return result.join("")
 }
 
 
@@ -215,4 +214,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
-
