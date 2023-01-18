@@ -36,7 +36,3 @@ Starter code from Skills Front End Development Bootcamp.
 
 MIT License
 Copyright (c) 2022 Chirbirita
-
----
-
-© 2022 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
